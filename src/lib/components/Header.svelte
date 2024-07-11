@@ -1,347 +1,217 @@
-<script lang="ts">
-  import LanguageSwitcher from "./languageswitcher.svelte";
-  import { onMount } from "svelte";
+<script>
+  import LanguageSwitcher from "./LanguageSwitcher.svelte";
+  import { page } from "$app/stores";
   import * as m from "$lib/paraglide/messages.js";
-
-  let paddlaOpen = false;
-  let omOssOpen = false;
-  let mobileMenuOpen = false;
-  let mobilePaddlaOpen = false;
-  let mobileOmOssOpen = false;
-
-  function toggleDropdown(dropdown: "paddla" | "omOss", isOpen: boolean) {
-    if (dropdown === "paddla") {
-      paddlaOpen = isOpen;
-      omOssOpen = false;
-    } else if (dropdown === "omOss") {
-      omOssOpen = isOpen;
-      paddlaOpen = false;
-    }
-  }
-
-  function toggleMobileDropdown(dropdown: "paddla" | "omOss") {
-    if (dropdown === "paddla") {
-      mobilePaddlaOpen = !mobilePaddlaOpen;
-      mobileOmOssOpen = false;
-    } else if (dropdown === "omOss") {
-      mobileOmOssOpen = !mobileOmOssOpen;
-      mobilePaddlaOpen = false;
-    }
-  }
-
-  onMount(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        !(event.target instanceof HTMLElement) ||
-        !event.target.closest("nav")
-      ) {
-        paddlaOpen = false;
-        omOssOpen = false;
-        mobilePaddlaOpen = false;
-        mobileOmOssOpen = false;
-      }
-    }
-
-    document.addEventListener("click", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  });
+  import { base } from "$app/paths";
 </script>
 
-<nav
-  class="sticky top-0 z-50 bg-white flex justify-between items-center p-4 shadow"
->
-  <a href="/" class="flex items-center">
-    <img src="/Logga.svg" alt="Stisses Logo" class="h-15 w-20" />
-  </a>
-
-  <button
-    class="md:hidden p-2"
-    on:click={() => (mobileMenuOpen = !mobileMenuOpen)}
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="h-6 w-6"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      stroke-width="2"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M4 6h16M4 12h16m-7 6h7"
-      />
-    </svg>
-  </button>
-
-  <ul class="hidden md:flex flex-wrap items-center font-medium text-sm">
-    <li
-      class="p-4 lg:px-8 relative flex items-center space-x-1"
-      on:mouseenter={() => toggleDropdown("paddla", true)}
-      on:mouseleave={() => toggleDropdown("paddla", false)}
-    >
-      <a
-        class="text-slate-800 hover:text-slate-900 flex items-center"
-        href="#0"
-        aria-expanded={paddlaOpen}
-        >{m.nav1()}
+<header class="navbar bg-base-100">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <button tabindex="0" class="btn btn-ghost lg:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="ml-1 h-4 w-4"
-          viewBox="0 0 20 20"
-          fill="currentColor"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
         >
           <path
-            fill-rule="evenodd"
-            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-            clip-rule="evenodd"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h8m-8 6h16"
           />
         </svg>
-      </a>
-      {#if paddlaOpen}
-        <ul
-          class="origin-top-right absolute top-full left-1/2 -translate-x-1/2 min-w-[240px] bg-white border border-slate-200 p-2 rounded-lg shadow-xl"
-        >
-          <li>
-            <a
-              class="text-slate-800 hover:bg-slate-50 flex items-center p-2"
-              href="#">{m.slow_quiet_crab_boost()}</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-slate-800 hover:bg-slate-50 flex items-center p-2"
-              href="#">{m.teary_civil_lemming_glow()}</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-slate-800 hover:bg-slate-50 flex items-center p-2"
-              href="#">{m.mild_flaky_nils_nudge()}</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-slate-800 hover:bg-slate-50 flex items-center p-2"
-              href="#">{m.topical_lazy_lynx_win()}</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-slate-800 hover:bg-slate-50 flex items-center p-2"
-              href="#">{m.extra_white_tadpole_fade()}</a
-            >
-          </li>
-        </ul>
-      {/if}
-    </li>
-    <li class="p-4 lg:px-8">
-      <a class="text-slate-800 hover:text-slate-900" href="#"
-        >{m.tiny_raw_penguin_zip()}</a
+      </button>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
       >
-    </li>
-    <li
-      class="p-4 lg:px-8 relative flex items-center space-x-1"
-      on:mouseenter={() => toggleDropdown("omOss", true)}
-      on:mouseleave={() => toggleDropdown("omOss", false)}
-    >
-      <a
-        class="text-slate-800 hover:text-slate-900 flex items-center"
-        href="#0"
-        aria-expanded={omOssOpen}
-        >{m.fun_crazy_maggot_succeed()}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="ml-1 h-4 w-4"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-            clip-rule="evenodd"
-          />
-        </svg>
-      </a>
-      {#if omOssOpen}
-        <ul
-          class="origin-top-right absolute top-full left-1/2 -translate-x-1/2 min-w-[240px] bg-white border border-slate-200 p-2 rounded-lg shadow-xl"
-        >
-          <li>
-            <a
-              class="text-slate-800 hover:bg-slate-50 flex items-center p-2"
-              href="#">{m.fair_wide_jurgen_treat()}</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-slate-800 hover:bg-slate-50 flex items-center p-2"
-              href="#">{m.topical_weary_polecat_evoke()}</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-slate-800 hover:bg-slate-50 flex items-center p-2"
-              href="#">{m.candid_neat_loris_enjoy()}</a
-            >
-          </li>
-          <li>
-            <a
-              class="text-slate-800 hover:bg-slate-50 flex items-center p-2"
-              href="#">{m.light_gray_lamb_fade()}</a
-            >
-          </li>
-        </ul>
-      {/if}
-    </li>
-    <li class="p-4 lg:px-8">
-      <a class="text-slate-800 hover:text-slate-900" href="#"
-        >{m.moving_extra_tadpole_ask()}</a
-      >
-    </li>
-    <li class="p-4 lg:px-8">
-      <LanguageSwitcher />
-    </li>
-  </ul>
-
-  {#if mobileMenuOpen}
-    <ul
-      class="absolute top-16 left-0 w-full bg-white border-t border-gray-200 flex flex-col items-center md:hidden"
-    >
-      <li class="w-full text-center border-b border-gray-200">
-        <div
-          class="p-4 relative flex items-center justify-center"
-          on:click={() => toggleMobileDropdown("paddla")}
-        >
-          <a
-            class="text-slate-800 hover:text-slate-900 flex items-center justify-center w-full font-bold"
-            href="#0"
-            aria-expanded={mobilePaddlaOpen}
-            >{m.nav1()}
-            <svg
+        <li tabindex="0">
+          <a class="justify-between"
+            >{m.nav1()}<svg
+              class="fill-current"
               xmlns="http://www.w3.org/2000/svg"
-              class="ml-1 h-4 w-4"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
-        </div>
-        {#if mobilePaddlaOpen}
-          <ul class="bg-white w-full border-t border-gray-200">
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg
+            ></a
+          >
+          <ul class="p-2 bg-base-100">
+            <li><a href="{base}/ronne-a">{m.slow_quiet_crab_boost()}</a></li>
+            <li>
+              <a href="{base}/hjalmsjon">{m.teary_civil_lemming_glow()}</a>
+            </li>
+            <li>
+              <a href="{base}/kanadensare">{m.mild_flaky_nils_nudge()}</a>
+            </li>
+            <li><a href="{base}/kartor">{m.topical_lazy_lynx_win()}</a></li>
+            <li>
+              <a href="{base}/presentkort">{m.extra_white_tadpole_fade()}</a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="{base}/faq">{m.tiny_raw_penguin_zip()}</a></li>
+        <li tabindex="0">
+          <a class="justify-between"
+            >{m.fun_crazy_maggot_succeed()}<svg
+              class="fill-current"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z" /></svg
+            ></a
+          >
+          <ul class="p-2 bg-base-100">
+            <li>
+              <a href="{base}/vi-som-driver-stisses"
+                >{m.fair_wide_jurgen_treat()}</a
+              >
+            </li>
+            <li>
+              <a href="{base}/viktigt-for-oss"
+                >{m.topical_weary_polecat_evoke()}</a
+              >
+            </li>
+            <li>
+              <a href="{base}/vara-partners">{m.candid_neat_loris_enjoy()}</a>
+            </li>
+            <li><a href="{base}/hitta-hit">{m.light_gray_lamb_fade()}</a></li>
+          </ul>
+        </li>
+        <li><a href="{base}/upptack-mer">{m.moving_extra_tadpole_ask()}</a></li>
+      </ul>
+    </div>
+    <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li tabindex="0">
+        <details>
+          <summary>{m.nav1()}</summary>
+          <ul class="p-2 bg-base-100">
             <li>
               <a
-                class="text-slate-800 hover:bg-slate-50 flex items-center p-2"
-                href="#">{m.slow_quiet_crab_boost()}</a
+                href="{base}/ronne-a"
+                aria-current={$page.route.id === "/ronne-a"
+                  ? "page"
+                  : undefined}>{m.slow_quiet_crab_boost()}</a
               >
             </li>
             <li>
               <a
-                class="text-slate-800 hover:bg-slate-50 flex items-center p-2"
-                href="#">{m.teary_civil_lemming_glow()}</a
+                href="{base}/hjalmsjon"
+                aria-current={$page.route.id === "/hjalmsjon"
+                  ? "page"
+                  : undefined}>{m.teary_civil_lemming_glow()}</a
               >
             </li>
             <li>
               <a
-                class="text-slate-800 hover:bg-slate-50 flex items-center p-2"
-                href="#">{m.mild_flaky_nils_nudge()}</a
+                href="{base}/kanadensare"
+                aria-current={$page.route.id === "/kanadensare"
+                  ? "page"
+                  : undefined}>{m.mild_flaky_nils_nudge()}</a
               >
             </li>
             <li>
               <a
-                class="text-slate-800 hover:bg-slate-50 flex items-center p-2"
-                href="#">{m.topical_lazy_lynx_win()}</a
+                href="{base}/kartor"
+                aria-current={$page.route.id === "/kartor" ? "page" : undefined}
+                >{m.topical_lazy_lynx_win()}</a
               >
             </li>
             <li>
               <a
-                class="text-slate-800 hover:bg-slate-50 flex items-center p-2"
-                href="#">{m.extra_white_tadpole_fade()}</a
+                href="{base}/presentkort"
+                aria-current={$page.route.id === "/presentkort"
+                  ? "page"
+                  : undefined}>{m.extra_white_tadpole_fade()}</a
               >
             </li>
           </ul>
-        {/if}
+        </details>
       </li>
-      <li class="p-4 w-full text-center border-b border-gray-200">
-        <a class="text-slate-800 hover:text-slate-900" href="#"
+      <li>
+        <a
+          href="{base}/faq"
+          aria-current={$page.route.id === "/faq" ? "page" : undefined}
           >{m.tiny_raw_penguin_zip()}</a
         >
       </li>
-      <li class="w-full text-center border-b border-gray-200">
-        <div
-          class="p-4 relative flex items-center justify-center"
-          on:click={() => toggleMobileDropdown("omOss")}
-        >
-          <a
-            class="text-slate-800 hover:text-slate-900 flex items-center justify-center w-full font-bold"
-            href="#0"
-            aria-expanded={mobileOmOssOpen}
-            >{m.fun_crazy_maggot_succeed()}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="ml-1 h-4 w-4"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a>
-        </div>
-        {#if mobileOmOssOpen}
-          <ul class="bg-white w-full border-t border-gray-200">
+      <li tabindex="0">
+        <details>
+          <summary>{m.fun_crazy_maggot_succeed()}</summary>
+          <ul class="p-2 bg-base-100">
             <li>
               <a
-                class="text-slate-800 hover:bg-slate-50 flex items-center justify-center p-2"
-                href="#">{m.fair_wide_jurgen_treat()}</a
+                href="{base}/vi-som-driver-stisses"
+                aria-current={$page.route.id === "/vi-som-driver-stisses"
+                  ? "page"
+                  : undefined}>{m.fair_wide_jurgen_treat()}</a
               >
             </li>
             <li>
               <a
-                class="text-slate-800 hover:bg-slate-50 flex items-center justify-center p-2"
-                href="#">{m.topical_weary_polecat_evoke()}</a
+                href="{base}/viktigt-for-oss"
+                aria-current={$page.route.id === "/viktigt-for-oss"
+                  ? "page"
+                  : undefined}>{m.topical_weary_polecat_evoke()}</a
               >
             </li>
             <li>
               <a
-                class="text-slate-800 hover:bg-slate-50 flex items-center justify-center p-2"
-                href="#">{m.candid_neat_loris_enjoy()}</a
+                href="{base}/vara-partners"
+                aria-current={$page.route.id === "/vara-partners"
+                  ? "page"
+                  : undefined}>{m.candid_neat_loris_enjoy()}</a
               >
             </li>
             <li>
               <a
-                class="text-slate-800 hover:bg-slate-50 flex items-center justify-center p-2"
-                href="#">{m.light_gray_lamb_fade()}</a
+                href="{base}/hitta-hit"
+                aria-current={$page.route.id === "/hitta-hit"
+                  ? "page"
+                  : undefined}>{m.light_gray_lamb_fade()}</a
               >
             </li>
           </ul>
-        {/if}
+        </details>
       </li>
-      <li class="p-4 w-full text-center border-b border-gray-200">
-        <a class="text-slate-800 hover:text-slate-900" href="#"
+      <li>
+        <a
+          href="{base}/upptack-mer"
+          aria-current={$page.route.id === "/upptack-mer" ? "page" : undefined}
           >{m.moving_extra_tadpole_ask()}</a
         >
       </li>
-      <li class="p-4 w-full text-center">
-        <LanguageSwitcher />
-      </li>
     </ul>
-  {/if}
-</nav>
+  </div>
+  <div class="navbar-end">
+    <LanguageSwitcher />
+    <img src="path-to-your-logo.png" alt="Logo" class="h-8 ml-4" />
+  </div>
+</header>
 
 <style>
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  header {
+    display: flex;
+    padding: 1em;
+    justify-content: space-between;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
   nav {
-    position: relative;
+    display: flex;
+    gap: 1em;
+  }
+
+  a[aria-current="page"] {
+    font-weight: bold;
   }
 </style>
