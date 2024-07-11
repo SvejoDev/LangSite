@@ -7,7 +7,3 @@
 </script>
 
 
-<h1 class=" text-red-600">{m.WelcomeMessage()}</h1>
-<p>
-  {m.less_only_larva_earn()}
-</p>
