@@ -1,14 +1,12 @@
 <!-- src/routes/+layout.svelte -->
 <script>
-  import Header from "$lib/components/LanguageSwitcher.svelte";
+  import Header from "$lib/components/header.svelte";
   import { ParaglideJS } from "@inlang/paraglide-sveltekit";
   import { i18n } from "$lib/i18n.js";
   import "../app.css";
 </script>
 
-<Header>
-
-</Header>
+<Header />
 
 <ParaglideJS {i18n}>
   <slot />

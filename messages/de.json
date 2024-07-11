@@ -1,5 +1,4 @@
 {
-  "$schema": "https://inlang.com/schema/inlang-message-format",
-  "WelcomeMessage": "Hallo Servus! Willkommen zu SvelteKit!",
-  "less_only_larva_earn": "Testen der Funktionen"
+  "$schema": "https://inlang.com/schema/inlang-message-format"
+  
 }
