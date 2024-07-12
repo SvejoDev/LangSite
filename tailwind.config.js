@@ -2,6 +2,9 @@
 export default {
   content: [],
   content: ["./src/**/*.{html,svelte,js,ts}"],
+  daisyui: {
+    themes: ["light"],
+  },
   theme: {
     extend: {},
   },
