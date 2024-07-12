@@ -1,136 +1,94 @@
 <script>
-  import * as m from "$lib/paraglide/messages.js";
-  import { onMount } from "svelte";
-  import LanguageSwitcher from "./languageswitcher.svelte";
-  import { writable } from "svelte/store";
-
-  let isMenuOpen = writable(false);
-
-  function toggleMenu() {
-    isMenuOpen.update((open) => !open);
-  }
-
-  function closeMenu() {
-    isMenuOpen.set(false);
-  }
+  import * as m from "$lib/paraglide/messages";
+  import LanguageSwitcher from "./LanguageSwitcher.svelte";
+  import Logo from "./logo.svelte";
+  import logo from "./logo.svelte";
 </script>
 
-<header class="bg-white">
-  <nav
-    class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
-    aria-label="Global"
-  >
-    <div class="flex lg:flex-1">
-      <a href="#" class="-m-1.5 p-1.5">
-        <span class="sr-only">Your Company</span>
-        <img class="h-8 w-auto" src="/Logga.svg" alt="Company Logo" />
-      </a>
-    </div>
-    <div class="flex lg:hidden">
-      <button
-        type="button"
-        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-        on:click={toggleMenu}
-      >
-        <span class="sr-only">Open main menu</span>
+<div class="navbar bg-base-100 sticky top-0">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
         <svg
-          class="h-6 w-6"
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
           fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
           stroke="currentColor"
-          aria-hidden="true"
         >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            stroke-width="2"
+            d="M4 6h16M4 12h8m-8 6h16"
           />
         </svg>
-      </button>
-    </div>
-    <div class="hidden lg:flex lg:gap-x-12">
-      <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
-        >{m.nav1()}</a
-      >
-      <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
-        >Features</a
-      >
-      <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
-        >Marketplace</a
-      >
-      <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
-        >Company</a
-      >
-    </div>
-    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <LanguageSwitcher />
-    </div>
-  </nav>
-  <!-- Mobile menu, show/hide based on menu open state. -->
-  {#if $isMenuOpen}
-    <div class="lg:hidden" role="dialog" aria-modal="true">
-      <!-- Background backdrop, show/hide based on slide-over state. -->
-      <div
-        class="fixed inset-0 z-10 bg-black bg-opacity-50"
-        on:click={closeMenu}
-      ></div>
-      <div
-        class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
-      >
-        <div class="flex items-center justify-between">
-          <button
-            type="button"
-            class="-m-2.5 rounded-md p-2.5 text-gray-700"
-            on:click={toggleMenu}
-          >
-            <span class="sr-only">Close menu</span>
-            <svg
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        </div>
-        <div class="mt-6 flow-root">
-          <div class="-my-6 divide-y divide-gray-500/10">
-            <div class="space-y-2 py-6">
-              <a
-                href="#"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                on:click={closeMenu}>Product</a
-              >
-              <a
-                href="#"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                on:click={closeMenu}>Features</a
-              >
-              <a
-                href="#"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                on:click={closeMenu}>Marketplace</a
-              >
-              <a
-                href="#"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                on:click={closeMenu}>Company</a
-              >
-            </div>
-            <div class="py-6">
-              <LanguageSwitcher />
-            </div>
-          </div>
-        </div>
       </div>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-72 p-2 shadow"
+      >
+        <li>
+          <details>
+            <summary>{m.nav1()}</summary>
+            <ul class="p-2 w-30">
+              <li><a>{m.slow_quiet_crab_boost()}</a></li>
+              <li><a>{m.teary_civil_lemming_glow()}</a></li>
+              <li><a>{m.mild_flaky_nils_nudge()}</a></li>
+              <li><a>{m.topical_lazy_lynx_win()}</a></li>
+              <li><a>{m.extra_white_tadpole_fade()}</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a>{m.tiny_raw_penguin_zip()}</a></li>
+        <li>
+          <details>
+            <summary>{m.fun_crazy_maggot_succeed()}</summary>
+            <ul class="p-2 w-72">
+              <li><a>{m.fair_wide_jurgen_treat()}</a></li>
+              <li><a>{m.topical_weary_polecat_evoke()}</a></li>
+              <li><a>{m.candid_neat_loris_enjoy()}</a></li>
+              <li><a>{m.light_gray_lamb_fade()}</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a>{m.moving_extra_tadpole_ask()}</a></li>
+      </ul>
     </div>
-  {/if}
-</header>
+    <div class=" ml-10">
+      <Logo />
+    </div>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li>
+        <details>
+          <summary>{m.nav1()}</summary>
+          <ul class="p-2 w-52">
+            <li><a>{m.slow_quiet_crab_boost()}</a></li>
+            <li><a>{m.teary_civil_lemming_glow()}</a></li>
+            <li><a>{m.mild_flaky_nils_nudge()}</a></li>
+            <li><a>{m.topical_lazy_lynx_win()}</a></li>
+            <li><a>{m.extra_white_tadpole_fade()}</a></li>
+          </ul>
+        </details>
+      </li>
+      <li><a>{m.tiny_raw_penguin_zip()}</a></li>
+      <li>
+        <details>
+          <summary>{m.fun_crazy_maggot_succeed()}</summary>
+          <ul class="p-2 w-56">
+            <li><a>{m.fair_wide_jurgen_treat()}</a></li>
+            <li><a>{m.topical_weary_polecat_evoke()}</a></li>
+            <li><a>{m.candid_neat_loris_enjoy()}</a></li>
+            <li><a>{m.light_gray_lamb_fade()}</a></li>
+          </ul>
+        </details>
+      </li>
+      <li><a>{m.moving_extra_tadpole_ask()}</a></li>
+    </ul>
+  </div>
+  <div class="navbar-end">
+    <LanguageSwitcher />
+  </div>
+</div>

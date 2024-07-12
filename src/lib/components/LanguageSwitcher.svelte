@@ -21,17 +21,16 @@
     en: "🇬🇧 English",
     de: "🇩🇪 Deutsch",
     sv: "🇸🇪 Svenska",
-    dk: "🇩🇰 Dansk",
+    da: "🇩🇰 Dansk",
   };
 </script>
 
 <select
   on:change={(e) => switchToLanguage(/** @type {any} */ (e).target.value)}
-  class="p-2 border border-gray-300 rounded-md"
 >
   {#each availableLanguageTags as langTag}
-    <option value={langTag} selected={languageTag() === langTag}>
-      {labels[langTag]}
-    </option>
+    <option value={langTag} selected={languageTag() === langTag}
+      >{labels[langTag]}</option
+    >
   {/each}
 </select>
