@@ -1,4 +1,5 @@
 <script>
-  import * as m from "$lib/paraglide/messages"
+  import Hero from "$lib/components/Hero.svelte";
 </script>
 
+<Hero/>

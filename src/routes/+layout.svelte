@@ -10,7 +10,6 @@
 
 <ParaglideJS {i18n}>
   <Header />
-<Hero/>
 
   <slot />
 </ParaglideJS>
