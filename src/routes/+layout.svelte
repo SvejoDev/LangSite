@@ -5,12 +5,10 @@
   import { i18n } from "$lib/i18n.js";
   import "../app.css";
   import "tailwindcss/tailwind.css";
-  import Hero from "$lib/components/Hero.svelte";
 </script>
 
 <ParaglideJS {i18n}>
   <Header />
-<Hero/>
 
   <slot />
 </ParaglideJS>
