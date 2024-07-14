@@ -1,10 +1,8 @@
 <!-- src/routes/+layout.svelte -->
 <script>
-  import Header from "$lib/components/Header.svelte";
-  import { ParaglideJS } from "@inlang/paraglide-sveltekit";
-  import { i18n } from "$lib/i18n.js";
   import "../../app.css";
   import "tailwindcss/tailwind.css";
+  import * as m from "$lib/paraglide/messages";
 </script>
 
-<h1>Testar på de olika språken</h1>
+<h1>{m.swift_zesty_seahorse_nudge()}</h1>
