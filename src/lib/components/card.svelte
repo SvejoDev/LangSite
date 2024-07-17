@@ -7,37 +7,40 @@
   export let link;
 </script>
 
-<div
-  class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full sm:w-90"
->
+<a href={link}>
   <div
-    class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-48 sm:h-64"
+    class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full sm:w-90 h-[28rem]"
   >
-    <img src={imageURL} alt="card-image" class="object-cover w-full h-full" />
-  </div>
-  <div class="p-6">
-    <div class="flex flex-col items-start justify-between mb-2">
-      <p
-        class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900 w-full"
-      >
-        {title}
-      </p>
-      <p
-        class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75"
-      >
-        {description1}
-      </p>
-      <p
-        class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75"
-      >
-        {description2}
-      </p>
-    </div>
-    <p
-      class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900 w-full text-right"
+    <div
+      class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-48 sm:h-64"
     >
-      {price}
-    </p>
+      <img src={imageURL} alt="card-image" class="object-cover w-full h-full" />
+    </div>
+    <div class="p-6 flex flex-col flex-grow">
+      <div class="flex flex-col items-start justify-between mb-2 flex-grow">
+        <p
+          class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900 w-full"
+        >
+          {title}
+        </p>
+        <p
+          class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75"
+        >
+          {description1}
+        </p>
+        <p
+          class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75"
+        >
+          {description2}
+        </p>
+      </div>
+      <div class="mt-auto">
+        <p
+          class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900 w-full text-right"
+        >
+          {price}
+        </p>
+      </div>
+    </div>
   </div>
-  <div class="p-6 pt-0"></div>
-</div>
+</a>

@@ -51,7 +51,6 @@
       price: m.warm_candid_toucan_lead(),
       link: "/product/hjelmsjon",
     },
-    // Lägg till fler produkter här...
   ];
 </script>
 
