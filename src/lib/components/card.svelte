@@ -27,9 +27,7 @@
             {title}
           </p>
           {#if addition}
-            <!-- Kontrollera om addition finns -->
             <div class="badge badge-secondary ml-2">{addition}</div>
-            <!-- Visa badgen bredvid titeln -->
           {/if}
         </div>
         <p

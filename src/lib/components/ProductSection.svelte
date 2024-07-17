@@ -34,7 +34,7 @@
       description2: "",
       price: m.mellow_knotty_ibex_enrich(),
       link: "/product/teambuilding",
-      addition: "Företag",
+      addition: m.game_less_kitten_absorb(),
     },
     {
       imageURL: "/friluftsliv.webp",
@@ -43,7 +43,7 @@
       description2: "",
       price: m.vexed_sad_turtle_sing(),
       link: "/product/friluftsliv",
-      addition: "Skola"
+      addition: m.flaky_muddy_sloth_wave()
     },
     {
       imageURL: "/hjelmsjon.webp",
