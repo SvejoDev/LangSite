@@ -4,13 +4,14 @@
   export let description1;
   export let description2;
   export let price;
+  export let link;
 </script>
 
 <div
   class="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-full sm:w-90"
 >
   <div
-    class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-48 sm:h-96"
+    class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-48 sm:h-64"
   >
     <img src={imageURL} alt="card-image" class="object-cover w-full h-full" />
   </div>
@@ -26,7 +27,7 @@
       >
         {description1}
       </p>
-       <p
+      <p
         class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75"
       >
         {description2}
@@ -38,6 +39,5 @@
       {price}
     </p>
   </div>
-  <div class="p-6 pt-0">
-  </div>
+  <div class="p-6 pt-0"></div>
 </div>
