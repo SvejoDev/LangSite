@@ -6,7 +6,7 @@
     {
       imageURL: "/excitingpaddle.webp",
       title: m.noble_caring_dingo_chop(), // Anropa funktionen och tilldela resultatet
-      description: m.ideal_awake_grizzly_care(), // Anropa funktionen och tilldela resultatet
+      description: m.antsy_warm_cowfish_achieve(), // Anropa funktionen och tilldela resultatet
       price: m.born_antsy_lizard_slurp(), // Anropa funktionen och tilldela resultatet
     },
     {
