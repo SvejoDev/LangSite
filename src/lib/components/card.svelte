@@ -1,9 +1,9 @@
 <script>
   export let imageURL;
   export let title;
-  export let description;
+  export let description1;
+  export let description2;
   export let price;
-  import * as m from "$lib/paraglide/messages";
 </script>
 
 <div
@@ -24,7 +24,12 @@
       <p
         class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75"
       >
-        {description}
+        {description1}
+      </p>
+       <p
+        class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75"
+      >
+        {description2}
       </p>
     </div>
     <p
