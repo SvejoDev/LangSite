@@ -1,3 +1,4 @@
+<!-- ProductCard.svelte -->
 <script>
   export let imageURL;
   export let title;
@@ -5,6 +6,7 @@
   export let description2;
   export let price;
   export let link;
+  export let addition; // Nytt fält för addition
 </script>
 
 <a href={link}>
@@ -18,11 +20,16 @@
     </div>
     <div class="p-6 flex flex-col flex-grow">
       <div class="flex flex-col items-start justify-between mb-2 flex-grow">
-        <p
-          class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900 w-full"
-        >
-          {title}
-        </p>
+        <div class="flex items-center w-full">
+          <p
+            class="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900"
+          >
+            {title}
+          </p>
+          {#if addition}
+            <div class="badge badge-secondary ml-2">{addition}</div>
+          {/if}
+        </div>
         <p
           class="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75"
         >
