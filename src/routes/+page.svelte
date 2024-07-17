@@ -3,6 +3,7 @@
   import Productsection from "$lib/components/ProductSection.svelte";
   import Review from "$lib/components/review.svelte";
   import * as m from "$lib/paraglide/messages";
+  import Usp from "$lib/components/usp.svelte";
 </script>
 
 <main>
@@ -32,7 +33,14 @@
       name="Hampus Edström"
       title="Local guide"
     />
+
+
+
   </div>
+
+
+
+
 
   <style>
     .reviews-container {
@@ -49,3 +57,5 @@
     }
   </style>
 </main>
+
+      <Usp/>  
