@@ -5,21 +5,19 @@
   const products = [
     {
       imageURL: "/excitingpaddle.webp",
-      title: "{m.noble_caring_dingo_chop()}", // Anropa funktionen och tilldela resultatet
-      description:
-        "{m.ideal_awake_grizzly_care()}", // Anropa funktionen och tilldela resultatet
-      price: "{m.born_antsy_lizard_slurp()}", // Anropa funktionen och tilldela resultatet
+      title: m.noble_caring_dingo_chop(), // Anropa funktionen och tilldela resultatet
+      description: m.ideal_awake_grizzly_care(), // Anropa funktionen och tilldela resultatet
+      price: m.born_antsy_lizard_slurp(), // Anropa funktionen och tilldela resultatet
     },
     {
       imageURL: "/pleasentjourney.webp",
-      title: "{m.aware_fluffy_ray_charm()}",
-      description:
-        "{m.game_loud_raven_tend()}",
+      title: m.aware_fluffy_ray_charm(),
+      description: m.game_loud_raven_tend(),
       price: "från 590SEK/person",
     },
     {
       imageURL: "/challengingpaddle.webp",
-      title: "Utmanande paddling i vacker natur",
+      title: m.short_tame_mongoose_dance(),
       description:
         "Paddla med dina bästa vänner för skratt och äventyr på Rönne å. Perfekt för att skapa minnen tillsammans!",
       price: "från 990SEK/person",
